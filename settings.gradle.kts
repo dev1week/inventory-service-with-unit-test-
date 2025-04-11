@@ -7,5 +7,6 @@ plugins {
 
 include(
     "practices:simple",
-        "practices:inventory"
+    "practices:inventory",
+
 )

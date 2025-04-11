@@ -8,7 +8,11 @@ repositories {
 }
 
 tasks.test {
-    useJUnitPlatform()
+    useJUnitPlatform {
+        if (EnvUtils.isAct()) {
+            excludeTags("integration")
+        }
+    }
 
     testLogging {
         events("passed", "skipped", "failed")
@@ -25,4 +29,10 @@ dependencies {
     // mockito
     testImplementation(Testing.mockito.core)
     testImplementation(Testing.mockito.junitJupiter)
+
+    project.afterEvaluate {
+        if(project.pluginManager.hasPlugin("custom.spring-conventions")) {
+            testImplementation(Spring.boot.test)
+        }
+    }
 }

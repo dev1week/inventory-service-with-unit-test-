@@ -42,3 +42,7 @@ bin/
 .DS_Store
 
 .idea
+
+**/db_data
+
+jmeter.log
